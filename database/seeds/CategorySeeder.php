@@ -12,7 +12,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'category_name' => 'Alat Kesehatan',
+            'category_name' => 'Analgesik Narkotik',
+        ]);
+
+        DB::table('categories')->insert([
+            'category_name' => 'Analgesik Non Narkotik',
         ]);
     }
 }
