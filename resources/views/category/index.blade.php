@@ -11,23 +11,20 @@
 <body>
 
 <div class="container">
-  <h2>Daftar Obat</h2>
+  <h2>Daftar Kategori</h2>
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Nama</th>
-        <th>Bentuk</th>
+        <!-- <th>Bentuk</th>
         <th>Formula</th>
-        <th>Harga</th>
+        <th>Harga</th> -->
       </tr>
     </thead>
     <tbody>
         @foreach($result as $d)
         <tr>
-            <td>{{$d->generic_name}}</td>
-            <td>{{$d->form}}</td>
-            <td>{{$d->restriction_formula}}</td>
-            <td>{{$d->price}}</td>
+            <td>{{$d->category_name}}</td>
         </tr>
         @endforeach
     </tbody>
