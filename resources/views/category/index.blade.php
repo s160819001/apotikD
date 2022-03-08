@@ -16,17 +16,24 @@
     <thead>
       <tr>
         <th>Nama</th>
-        <!-- <th>Bentuk</th>
-        <th>Formula</th>
-        <th>Harga</th> -->
       </tr>
     </thead>
     <tbody>
-        @foreach($result as $d)
-        <tr>
-            <td>{{$d->category_name}}</td>
-        </tr>
-        @endforeach
+      @foreach($result as $d)
+      <tr>
+        <td>{{$d->category_name}}</td>
+      </tr>
+      <td>
+          @foreach($d->medicines as $m)
+            <div class="col-md-3" style="text-align:center; border:1px solid black; margin:10px; padding:10px; border-radius:5px;">
+            <img src="{{asset('images/'.$m->image)}}" height="120px"/><br>
+            <b>{{$m->generic_name}}</b><br>
+            {{$m->form}}<br>
+            <b>Rp {{$m->price}},-</b>
+            </div>
+          @endforeach
+      </td>
+      @endforeach
     </tbody>
   </table>
 </div>

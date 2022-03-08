@@ -19,15 +19,14 @@ class CategoryController extends Controller
         // $result = DB::select(DB::raw("SELECT * FROM categories"));
 
         //query builder
-        $result = DB::table("categories")->get();
+        // $result = DB::table("categories")->get();
 
         //eloquent model
-        // $result = Medicine::all();
+        $result = Category::all();
 
         // dd($result);
 
         return view('category.index',compact('result'));
-        // return view('medicine.index',['data'->$result]);
     }
 
     /**
