@@ -22,3 +22,7 @@ Route::resource('medicines','MedicineController');
 Route::resource('categories','CategoryController');
 
 Route::get('coba1', 'MedicineController@coba1');
+
+Route::get('report/listmedicine/{id}','CategoryController@showList');
+
+Route::get('report/listMostExpensiveMedicine','MedicineController@mostExpensive');

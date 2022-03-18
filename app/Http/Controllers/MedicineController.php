@@ -137,4 +137,13 @@ class MedicineController extends Controller
 
         dd($result);
     }
+
+    public function mostExpensive()
+    {
+        $result = DB::select(DB::raw("SELECT categories.category_name, medicines.generic_name, medicines.form, MAX(medicines.price) as price, medicines.image 
+        FROM medicines
+        INNER JOIN categories ON medicines.category_id = categories.id
+        GROUP BY categories.category_name"));
+       return view('report.list_mostExpensiveMedicine_by_category',compact('result'));
+    }
 }

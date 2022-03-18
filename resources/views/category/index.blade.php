@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Toko Obat</title>
@@ -8,10 +8,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-
-<div class="container">
-  <h2>Daftar Kategori</h2>
+<body> -->
+@extends('layout.conquer')
+@section('content')
+<div class="portlet">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="fa fa-reorder"></i>Daftar Kategori
+		</div>
+	</div>
+	<div class="portlet-body">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -27,8 +33,10 @@
           @foreach($d->medicines as $m)
             <div class="col-md-3" style="text-align:center; border:1px solid black; margin:10px; padding:10px; border-radius:5px;">
             <img src="{{asset('images/'.$m->image)}}" height="120px"/><br>
+            <a href="/medicines/{{$m->id}}" target="_blank">
             <b>{{$m->generic_name}}</b><br>
             {{$m->form}}<br>
+            </a>
             <b>Rp {{$m->price}},-</b>
             </div>
           @endforeach
@@ -36,8 +44,9 @@
       @endforeach
     </tbody>
   </table>
+	</div>
 </div>
-
-</body>
-</html>
+@endsection
+<!-- </body>
+</html> -->
 
