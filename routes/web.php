@@ -23,6 +23,11 @@ Route::resource('categories','CategoryController');
 
 Route::get('coba1', 'MedicineController@coba1');
 
+Route::post('/medicines/showInfo','MedicineController@showInfo')->name('medicines.showInfo');
+
+
 Route::get('report/listmedicine/{id}','CategoryController@showList');
 
 Route::get('report/listMostExpensiveMedicine','MedicineController@mostExpensive');
+
+

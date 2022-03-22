@@ -146,4 +146,16 @@ class MedicineController extends Controller
         GROUP BY categories.category_name"));
        return view('report.list_mostExpensiveMedicine_by_category',compact('result'));
     }
+
+    public function showInfo(){
+        $result=Medicine::orderBy('price','desc')->first();
+        return response()->json(array(
+            'status'=>'oke',
+            'msg'=>"<div class='alert alert-info'>
+                     Did you know? 
+                     <br>The most expensive medicine is ".$result->generic_name." ".$result->form." with price : Rp ".$result->price.
+                     ",-</div>"
+        ),200);
+        
+    }
 }

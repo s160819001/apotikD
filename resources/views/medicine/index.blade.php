@@ -11,8 +11,26 @@
 <body> -->
 @extends('layout.conquer')
 @section('content')
+<h3 class="page-title">
+			Daftar Obat | <small>Daftar obat yang tersedia di Apotik "D"</small>
+			</h3>
+			<div class="page-bar">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Medicine</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+				</ul>
+				<div class="page-toolbar">
+					<!-- tempat action button -->
+				</div>
 <div class="container">
-  <h2>Daftar Obat</h2>
+  
   <table class="table table-striped">
     <thead>
       <tr>
@@ -26,16 +44,49 @@
       </tr>
     </thead>
     <tbody>
-        @foreach($result as $d)
+      @foreach($result as $d)
         <tr>
             <td>{{$d->generic_name}}</td>
             <td>{{$d->form}}</td>
             <td>{{$d->restriction_formula}}</td>
             <td>{{$d->category->category_name}}</td>
-            <td><img src="{{asset('images/'.$d->image)}}" height= 100px;></td>
+            
+            <td>
+              <a href='#detail_{{$d->id}}' data-toggle='modal'>
+                <img src="{{asset('images/'.$d->image)}}" height= 100px;>
+              </a>
+              <div class="modal fade" id="detail_{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">{{$d->generic_name}} {{$d->form}}</h4>
+                      </div>
+                      <div class="modal-body">
+                        <img src="{{asset('images/'.$d->image)}}" height='400px' />
+                        <br>Batas pemakaian : {{$d->restriction_formula}}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </td>
             <td>{{$d->price}}</td>
+            <td>
+              <a class='btn btn-info' href="{{route('medicines.show',$d->id)}}"
+                  data-target="#show{{$d->id}}" data-toggle='modal'>detail</a>        
+              <div class="modal fade" id="show{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <!-- put animated gif here -->
+                    <img src="{{asset('assets/img/ajax-modal-loading.gif')}}" alt="" class="loading">
+                  </div>
+                </div>
+              </div>
+            </td>
         </tr>
-        @endforeach
+      @endforeach
     </tbody>
   </table>
 </div>

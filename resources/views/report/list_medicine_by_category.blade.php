@@ -9,9 +9,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body> -->
-@extends('layout.conquer')
-@section('content')
-<div class="container">
   <h2>List Medicines by Category</h2>
   <p>Category ID : {{$id_category}} with name : {{$namecategory}} </p>
   <hr>
@@ -39,8 +36,6 @@
         @endforeach
     </tbody>
   </table>
-</div>
-@endsection
 <!-- </body>
 </html> -->
 

@@ -40,13 +40,53 @@
             <b>Rp {{$m->price}},-</b>
             </div>
           @endforeach
+          <a class='btn btn-xs btn-info'   data-toggle='modal' data-target='#myModal'
+          onclick='showProducts({{ $d->id }})'>
+          Detail</a>
       </td>
       @endforeach
     </tbody>
   </table>
+  <div class="modal fade" id="myModal" tabindex="-1" role="basic" aria-hidden="true">
+  <div class="modal-dialog modal-wide">
+     <div class="modal-content">
+       <div class="modal-header">
+          <h4 class="modal-title">Detail Obat</h4>
+       </div>
+        <div class="modal-body" id="showproducts">
+          <img src="{{asset('assets/img/heartbeat.gif')}}" alt="" style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;" class="loading">
+        </div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+        
+     </div>
+  </div>
+</div>
+
 	</div>
 </div>
 @endsection
 <!-- </body>
 </html> -->
 
+@section('javascript')
+<script>
+function showProducts(category_id)
+{
+  $.ajax({
+    type:'GET',
+    url:'{{url("report/listmedicine/")}}'+"/"+category_id,
+    data:{'_token':'<?php echo csrf_token() ?>',
+          'category_id':category_id
+         },
+    success: function(data){
+       $('#showproducts').html(data)
+    }
+  });
+}
+</script>
+@endsection
