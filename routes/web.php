@@ -31,3 +31,6 @@ Route::get('report/listmedicine/{id}','CategoryController@showList');
 Route::get('report/listMostExpensiveMedicine','MedicineController@mostExpensive');
 
 
+Route::resource('transactions','TransactionController');
+Route::post('/transactions/showDataAjax','TransactionController@showAjax')->name('transactions.showAjax');
+Route::get('/transactions/showDataAjax2/{id}','TransactionController@showAjax2')->name('transactions.showAjax2');

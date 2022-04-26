@@ -42,6 +42,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <link rel="shortcut icon" href="favicon.ico"/>
 
 @yield('javascript')
+
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -151,6 +152,12 @@ License: You must have a valid license purchased only from themeforest(the above
 				<a href="{{url('medicines')}}">
 				<i class="fa fa-glass"></i>
 				<span class="title">Medicine</span>
+				</a>
+			</li>
+            <li class="start ">
+				<a href="{{url('transactions')}}">
+				<i class="fa fa-shopping-cart"></i>
+				<span class="title">Transaction</span>
 				</a>
 			</li>
 			<li class="start ">
