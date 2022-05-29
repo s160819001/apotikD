@@ -75,7 +75,11 @@
             <td>{{$d->price}}</td>
             <td>
               <a class='btn btn-info' href="{{route('medicines.show',$d->id)}}"
-                  data-target="#show{{$d->id}}" data-toggle='modal'>detail</a>        
+                  data-target="#show{{$d->id}}" data-toggle='modal'>detail</a>
+                  <a class='btn btn-warning' href="{{route('medicines.show',$d->id)}}"
+                  data-target="#show{{$d->id}}" data-toggle='modal'>edit</a>
+                  <a class="btn btn-danger" href="{{route('medicines.show',$d->id)}}"
+                  data-target="#show{{$d->id}}" data-toggle='modal'>hapus</a>        
               <div class="modal fade" id="show{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">

@@ -34,3 +34,15 @@ Route::get('report/listMostExpensiveMedicine','MedicineController@mostExpensive'
 Route::resource('transactions','TransactionController');
 Route::post('/transactions/showDataAjax','TransactionController@showAjax')->name('transactions.showAjax');
 Route::get('/transactions/showDataAjax2/{id}','TransactionController@showAjax2')->name('transactions.showAjax2');
+
+Route::middleware(['auth'])->group(function(){
+    Route::resource('suppliers','SupplierController');
+    Route::post('suppliers/getEditForm','SupplierController@getEditForm')->name('suppliers.getEditForm');
+    Route::post('suppliers/getEditForm2','SupplierController@getEditForm2')->name('suppliers.getEditForm2');
+    Route::post('suppliers/deleteData','SupplierController@deleteData')->name('suppliers.deleteData');
+    Route::post('suppliers/saveData','SupplierController@saveData')->name('suppliers.saveData');    
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
