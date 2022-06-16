@@ -30,6 +30,11 @@ class MedicineController extends Controller
         // return view('medicine.index',['data'->$result]);
     }
 
+    public function front_index(){
+        $medicine=Medicine::all();
+        return view('frontend.product',compact('medicine'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -158,4 +163,27 @@ class MedicineController extends Controller
         ),200);
         
     }
+
+    public function addToCart($id){
+        $m=Medicine::find($id);
+        $cart=session()->get('cart');
+        if(!isset($cart[$id])){
+            $cart[$id]=[
+                "name"=>$m->generic_name." (".$m->form.")", 
+                "qty"=>1,
+                "price"=>$m->price,
+                "img"=>$m->image
+            ];
+        }else{
+            $cart[$id]['qty']++;
+        }
+        session()->put('cart',$cart);
+        return redirect()->back()->with('success','Medicine: '.$cart[$id]["name"].'     Qty: '.$cart[$id]['qty']);
+    }
+
+    public function checkout(){
+        return view('frontend.checkout');
+    }
+
+
 }

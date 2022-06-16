@@ -18,10 +18,15 @@ Route::get('/', function () {
 });
 
 Route::resource('medicines','MedicineController');
+Route::get('coba1', 'MedicineController@coba1');
+Route::get('/','MedicineController@front_index');
+Route::get('add-to-cart/{id}','MedicineController@addToCart');
+
+
+Route::get('checkout','MedicineController@checkout')->middleware('auth');
+
 
 Route::resource('categories','CategoryController');
-
-Route::get('coba1', 'MedicineController@coba1');
 
 Route::post('/medicines/showInfo','MedicineController@showInfo')->name('medicines.showInfo');
 
